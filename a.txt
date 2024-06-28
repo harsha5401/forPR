@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+ this is a vi editor with some changes within gitbash
+
+=======
+ this is a vi editor with some changes within gitbash
+second line with PR trigger
+added for pr
+>>>>>>> e4c7e7946f099d3d3f64502409c7ae0dbfe48577

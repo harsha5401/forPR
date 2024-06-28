@@ -1,0 +1,12 @@
+trigger:
+  branches:
+    include:
+      - main  # Or the branch you want to trigger the pipeline on
+      
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, World!
+  displayName: 'Print Hello, World!'
