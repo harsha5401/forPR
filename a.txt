@@ -1,6 +1,6 @@
 <<<<<<< HEAD
  this is a vi editor with some changes within gitbash
-to check pr fro 3rd tme
+to check pr fro 4th tme
 =======
  this is a vi editor with some changes within gitbash
 second line with PR trigger
