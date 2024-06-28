@@ -1,12 +1,68 @@
+# trigger: none  # Disable CI triggers for all branches
+
+# pr:
+#   branches:
+#     include:
+#       - main  # Trigger on PRs targeting the main branch
+# pool:
+#   vmImage: 'ubuntu-latest'
+
+# steps:
+# - script: echo Hello, World!
+#   displayName: 'Print Hello, World!'
+
 trigger: none  # Disable CI triggers for all branches
 
 pr:
   branches:
     include:
       - main  # Trigger on PRs targeting the main branch
+
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, World!
-  displayName: 'Print Hello, World!'
+variables:
+  SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+
+jobs:
+- job: CheckApproval
+  displayName: 'Check PR Approval Status'
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - script: |
+      echo "Checking if PR is approved..."
+      PR_ID=$(echo ${SYSTEM_PULLREQUEST_PULLREQUESTID})
+      ORGANIZATION=$(echo ${SYSTEM_TEAMPROJECT})
+      REPO=$(echo ${BUILD_REPOSITORY_NAME})
+      TOKEN=$(echo ${SYSTEM_ACCESSTOKEN})
+      RESPONSE=$(curl -s -H "Authorization: Bearer ${TOKEN}" \
+                  "https://dev.azure.com/${ORGANIZATION}/_apis/git/repositories/${REPO}/pullRequests/${PR_ID}/reviewers?api-version=6.0")
+
+      APPROVAL_COUNT=$(echo $RESPONSE | jq '[.value[] | select(.vote == 10)] | length')
+      if [ "$APPROVAL_COUNT" -gt 0 ]; then
+        echo "PR is approved."
+        echo "##vso[task.setvariable variable=PR_APPROVED;isOutput=true]true"
+      else
+        echo "PR is not approved."
+        echo "##vso[task.setvariable variable=PR_APPROVED;isOutput=true]false"
+      fi
+    displayName: 'Check PR Approval Status'
+  - task: PowerShell@2
+    displayName: 'Fail Pipeline if PR not approved'
+    inputs:
+      targetType: 'inline'
+      script: |
+        if ($env:PR_APPROVED -ne 'true') {
+          Write-Error "PR is not approved. Failing the job."
+        }
+
+- job: RunPipeline
+  displayName: 'Run Pipeline if PR Approved'
+  dependsOn: CheckApproval
+  condition: eq(dependencies.CheckApproval.outputs['PR_APPROVED'], 'true')
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - script: echo "Hello, World!"
+    displayName: 'Print Hello, World!'
