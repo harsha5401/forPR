@@ -1,7 +1,6 @@
 resources:
   repositories:
     - repository: forPR
-      
       name: harsha5401/forPR
       endpoint: github.com_harsha5401
 
