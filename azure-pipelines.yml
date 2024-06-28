@@ -1,9 +1,9 @@
-trigger:
+trigger: none  # Disable CI triggers for all branches
+
+pr:
   branches:
     include:
-      - main  # Or the branch you want to trigger the pipeline on
-      
-
+      - main  # Trigger on PRs targeting the main branch
 pool:
   vmImage: 'ubuntu-latest'
 
