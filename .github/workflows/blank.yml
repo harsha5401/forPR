@@ -17,6 +17,6 @@ jobs:
       uses: Azure/pipelines@v1
       with:
         azure-devops-project-url: https://dev.azure.com/hbasireddy/github
-        pipeline-name: harsha5401.forPR
+        azure-pipeline-name: harsha5401.forPR
         azure-devops-token: ${{ secrets.ADO_PAT }}
 
