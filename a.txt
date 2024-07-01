@@ -1,6 +1,6 @@
 <<<<<<< HEAD
  this is a vi editor with some changes within gitbash
-to check pr with normal checking for build validation for random
+to check pr with normal checking for build validation for random one last time
 =======
  this is a vi editor with some changes within gitbash
 second line with PR trigger
