@@ -1,9 +1,17 @@
-trigger: none  # Disable CI triggers for all branches
+# trigger: none  # Disable CI triggers for all branches
 
-pr:
+# pr:
+#   branches:
+#     include:
+
+#       - main  # Trigger on PRs targeting the main branch
+trigger:
   branches:
     include:
-      - main  # Trigger on PRs targeting the main branch
+      - main
+
+pr: none 
+
 pool:
   vmImage: 'ubuntu-latest'
 
