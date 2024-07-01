@@ -1,6 +1,6 @@
 <<<<<<< HEAD
  this is a vi editor with some changes within gitbash
-to check pr with azuredevops restapi
+to check pr with normal ci
 =======
  this is a vi editor with some changes within gitbash
 second line with PR trigger
