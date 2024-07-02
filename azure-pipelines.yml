@@ -14,7 +14,7 @@ schedules:
     displayName: Daily 2AM schedule
     branches:
       include:
-        - prod
+        - main
     always: true
 pr: none 
 
