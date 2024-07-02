@@ -10,7 +10,7 @@ trigger:
     exclude:
       - main
 schedules:
-  - cron: "10 14 * * *"  # Runs every day at 2 AM UTC
+  - cron: "32 13 * * *"  # Runs every day at 2 AM UTC
     displayName: Daily 2AM schedule
     branches:
       include:
