@@ -9,13 +9,13 @@ trigger:
   branches:
     include:
       - main
-schedules:
-  - cron: "12 9 * * *"  # Runs every day at 2 AM UTC
-    displayName: Daily 2AM schedule
-    branches:
-      include:
-        - main
-    always: true
+# schedules:
+#   - cron: "12 9 * * *"  # Runs every day at 2 AM UTC
+#     displayName: Daily 2AM schedule
+#     branches:
+#       include:
+#         - main
+#     always: true
 pr: none 
 
 pool:
