@@ -26,7 +26,7 @@ stages:
       - template: main.yml
 
     # Include dev.yml for 'dev' branch
-    - ${{ if eq(variables['buildBranch'], 'dev') }}:
+    - ${{ if eq(variables['buildBranch'], 'stage2') }}:
       - template: dev.yml
     
 
