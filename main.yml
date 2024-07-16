@@ -1,0 +1,3 @@
+steps:
+- script: echo "Running main branch specific steps"
+# Add more main branch specific steps here
