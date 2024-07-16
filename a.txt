@@ -3,6 +3,6 @@
 to check pr with normal checking for build validation with scheduleed automatic changes
 =======
  this is a vi editor with some changes within gitbash
-second line with PR trigger
+second line with PR trigger with main
 added for pr
 >>>>>>> e4c7e7946f099d3d3f64502409c7ae0dbfe48577
