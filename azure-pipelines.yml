@@ -2,6 +2,8 @@ trigger:
   branches:
     include:
       - main # Or the branch you want to trigger the pipeline on
+    exclude:
+      - stage2
 # pr:
 #   branches:
 #     include:
