@@ -1,11 +1,11 @@
 trigger:
   branches:
     include:
-      - main # Or the branch you want to trigger the pipeline on
-# pr:
-#   branches:
-#     include:
-#       - pr1
+      - stage2  # Or the branch you want to trigger the pipeline on
+pr:
+  branches:
+    include:
+      - stage2
  
       
 
