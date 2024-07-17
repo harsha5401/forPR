@@ -1,51 +1,52 @@
 trigger:
-  - main
-  - stage2
-
-pr:
   branches:
     include:
-    - stage2
-
+      - main # Or the branch you want to trigger the pipeline on
+   
+pr:
+  none     
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  buildBranch: $(Build.SourceBranchName)
-  sourceBranch: $(System.PullRequest.SourceBranchName)
+steps:
+- script: echo Hello, World!
+  displayName: 'Print Hello, World!'
 
-stages:
-- stage: Build
-  jobs:
-  - job: BuildJob
-    steps:
-    - script: echo "Building on branch $(buildBranch)"
-    
-    # Include main.yml for 'main' branch
-    - ${{ if eq(variables['buildBranch'], 'main') }}:
-      - template: main.yml
 
-    # Include dev.yml for 'dev' branch
-    - ${{ if eq(variables['buildBranch'], 'stage2') }}:
-      - template: dev.yml
-    
+
+
+
+
 
 # trigger:
+#   - main
+#   - stage2
+
+# pr:
 #   branches:
 #     include:
-#       - main # Or the branch you want to trigger the pipeline on
-#     exclude:
-#       - stage2
-# # pr:
-# #   branches:
-# #     include:
-# #       - pr1
- 
-      
+#     - stage2
 
 # pool:
 #   vmImage: 'ubuntu-latest'
 
-# steps:
-# - script: echo Hello, World!
-#   displayName: 'Print Hello, World!'
+# variables:
+#   buildBranch: $(Build.SourceBranchName)
+#   sourceBranch: $(System.PullRequest.SourceBranchName)
+
+# stages:
+# - stage: Build
+#   jobs:
+#   - job: BuildJob
+#     steps:
+#     - script: echo "Building on branch $(buildBranch)"
+    
+#     # Include main.yml for 'main' branch
+#     - ${{ if eq(variables['buildBranch'], 'main') }}:
+#       - template: main.yml
+
+#     # Include dev.yml for 'dev' branch
+#     - ${{ if eq(variables['buildBranch'], 'stage2') }}:
+#       - template: dev.yml
+    
+
