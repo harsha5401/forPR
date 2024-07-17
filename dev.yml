@@ -1,3 +1,0 @@
-steps:
-- script: echo "Running dev branch specific steps"
-# Add more dev branch specific steps here
